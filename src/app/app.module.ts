@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+
+import { DictatorFormComponent } from './dictator-form/dictator-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent
+
+    DictatorFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,51 @@
+<div class="container">
+
+    <form #dictatorForm="ngForm">
+        <p>Add a dictator</p>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" placeholder="Put in the first name" class="form-control" id="firstName" required
+                [(ngModel)]="dictator.firstName" name="firstName" #name="ngModel">
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" required [(ngModel)]="dictator.lastName"
+                    name="lastName" #name="ngModel">
+                <label for="birthYear">Birth Year</label>
+                <input type="text" pattern="[0-9]+" class="form-control" id="birthYear" required
+                    [(ngModel)]="dictator.birthYear" name="birthYear" #name="ngModel">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" required [(ngModel)]="dictator.description"
+                    name="description" #name="ngModel">
+                <label for="deathYear">Death Year</label>
+                <input type="text" pattern="[0-9]+" class="form-control" id="deathYear" [(ngModel)]="dictator.deathYear"
+                    name="deathYear" #name="ngModel">
+            </div>
+        </div>
+
+        <button [disabled]="!dictatorForm.form.valid" (click)="addDictator();dictatorForm.reset();">Add
+            Dictator</button>
+        <button (click)="dictatorForm.reset();">Reset form</button>
+    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-3">First Name</div>
+        <div class="col-3">Last Name</div>
+        <div class="col-3">Description</div>
+        <div class="col-1">Birth Year</div>
+        <div class="col-1">Death Year</div>
+        <div class="col-1">Delete</div>
+    </div>
+    <div class="row" *ngFor= "let dictator of dictators; let i = index">
+        <div class="col-3">{{dictator.firstName}}</div>
+        <div class="col-3">{{dictator.lastName}}</div>
+        <div class="col-3">{{dictator.description}}</div>
+        <div class="col-1">{{dictator.birthYear}}</div>
+        <div class="col-1">{{dictator.deathYear}}</div>
+        <div class="col-1"><button (click)="removeDictator(i)" >Delete</button></div>
+
+
+
+    </div>
+</div>
+
+
