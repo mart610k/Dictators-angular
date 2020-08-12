@@ -1,0 +1,58 @@
+
+<!-- made my own following this guide https://angular.io/guide/forms -->
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="name"
+        required
+        [(ngModel)]="model.username" name="name"
+        #name="ngModel">
+        <!-- <div [hidden]="name.valid || name.pristine"
+        class="alert alert-danger">
+        Username is required
+    </div> -->
+</div>
+<div class="form-group">
+    <label for="password">Password:</label>
+    <input type="text" class="form-control"
+    id="password" required [(ngModel)]="model.password" #name="ngModel" name="password">
+    <!-- <div [hidden]="password.valid || password.pristine" class="alert alert-danger">Password is required</div> -->
+</div>
+
+<button type="button" class="btn btn-default" [disabled]="!loginForm.form.valid" (click)="newUser(); loginForm.reset();">New Login</button><br>
+</form>
+<div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3">username</div>
+            <div class="col-md-9">{{ model.username }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">password</div>
+            <div class="col-md-9">{{ model.password }}</div>
+        </div>
+        <br>
+        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3">Username</div>
+        <div class="col-md-3">password</div>
+
+    </div>
+    <div *ngFor="let login of models" class="row" >
+
+        <div class="col-md-3"> {{login.username }}</div>
+        <div class="col-md-3"> {{login.password }}</div>
+       
+        
+    </div>
+</div>
